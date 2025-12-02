@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: arnold-chirchir-2
+    env: docker
+    dockerfilePath: ./docker/Dockerfile
+    plan: free
+    autoDeploy: true
+
+  - type: worker
+    name: arnold-vllm-worker
+    env: docker
+    dockerfilePath: ./docker/Dockerfile
+    plan: starter
+    envVars:
+      MODEL_PATH: /app/model/arnold-chirchir-2.Q4_K_M.gguf
